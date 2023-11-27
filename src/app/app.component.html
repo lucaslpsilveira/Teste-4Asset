@@ -7,7 +7,7 @@
 <div class="container">
   <div class="d-flex justify-content-between align-items-center cabecalho-tabela">
     <h1 class="mb-0 titulo-cadastro">Cadastro de pessoas</h1>
-    <button class="btn btn-cadastro">Novo cadastro <i class="bi bi-arrow-right"></i></button>
+    <button class="btn btn-cadastro" (click)="exibirMensagem('titulo','teste')">Novo cadastro <i class="bi bi-arrow-right"></i></button>
   </div>
   <table class="table">
     <thead class="table-dark">
@@ -39,3 +39,11 @@
     </tbody>
   </table>
 </div>
+<!-- A lib @ng-bootstrap/ng-bootstrap está com alguma incompatibilidade com o bootstrap 5
+  optei por criar um componente e controlar a partir deste.-->
+<app-mensagem-modal
+  [titulo]="tituloModal"
+  [mensagem]="mensagemModal"
+  [showModal]="showModal"
+  (fechar)="fecharModal()"
+></app-mensagem-modal>

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PessoaService } from './services/pessoa.service';
 import { Pessoa } from './services/interfaces';
+import { MensagemModalComponent } from './modais/mensagem/mensagem.component';
 
 @Component({
   selector: 'app-root',
@@ -16,10 +16,31 @@ export class AppComponent implements OnInit {
   limit: number | undefined;
   count: number | undefined;
 
-  constructor(private pessoaService: PessoaService) {}
+  tituloModal: string = "";
+  mensagemModal: string = "";
+  showModal: boolean = false;
+
+  @ViewChild('modalRef')
+  modalRef!: MensagemModalComponent;
+
+  constructor(
+    private pessoaService: PessoaService,
+    private modalService: NgbModal
+  ) {}
 
   ngOnInit(): void {
     this.listarPessoas();
+    this.exibirMensagem('Teste desenvolv', 'teste mensagem');
+  }
+
+  exibirMensagem(titulo: string, mensagem: string = ''): void {
+    this.tituloModal = titulo;
+    this.mensagemModal = mensagem;
+    this.showModal = true;
+  }
+
+  fecharModal(){
+    this.showModal = false;
   }
 
   listarPessoas(): void {
