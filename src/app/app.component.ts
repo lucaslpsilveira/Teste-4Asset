@@ -11,9 +11,9 @@ import { MensagemModalComponent } from './modais/mensagem/mensagem.component';
 export class AppComponent implements OnInit {
   title = 'teste-4asset';
   pessoas: Pessoa[] = [];
-  page: number | undefined;
-  limit: number | undefined;
-  count: number | undefined;
+  page: number = 1;
+  limit: number = 10;
+  count: number = 0;
 
   tituloModal: string = "";
   mensagemModal: string = "";
@@ -56,11 +56,11 @@ export class AppComponent implements OnInit {
   }
 
   listarPessoas(): void {
-    this.pessoaService.listarPessoas().subscribe((response) => {
+    this.pessoaService.listarPessoas(this.page, this.limit).subscribe((response) => {
       this.pessoas = response.results;
       this.page = response.page;
       this.limit = response.limit;
-      this.count = response.page;
+      this.count = response.count;
     });
   }
 
@@ -98,5 +98,10 @@ export class AppComponent implements OnInit {
     const mes = (dataOriginal.getMonth() + 1).toString().padStart(2, '0');
     const ano = dataOriginal.getFullYear();
     return `${dia}/${mes}/${ano}`;
+  }
+
+  alterarPagina(pagina: number) {
+    this.page = pagina;
+    this.listarPessoas();
   }
 }

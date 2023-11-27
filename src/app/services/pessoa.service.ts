@@ -12,8 +12,8 @@ export class PessoaService {
 
   constructor(private http: HttpClient) {}
 
-  listarPessoas(): Observable<ListaPessoasResponse> {
-    return this.http.get<ListaPessoasResponse>(`${this.apiUrl}/persons`);
+  listarPessoas(pagina: number, limite: number): Observable<ListaPessoasResponse> {
+    return this.http.get<ListaPessoasResponse>(`${this.apiUrl}/persons?limit=${limite}&page=${pagina}`);
   }
 
   cadastrarPessoa(pessoa: Pessoa): Observable<any> {

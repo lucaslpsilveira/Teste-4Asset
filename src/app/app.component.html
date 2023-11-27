@@ -38,6 +38,12 @@
       </tr>
     </tbody>
   </table>
+  <app-pagination
+    [paginaAtual]="page"
+    [totalItens]="count"
+    [limitePorPagina]="limit"
+    (paginaAlterada)="alterarPagina($event)"
+  ></app-pagination>
 </div>
 <!-- A lib @ng-bootstrap/ng-bootstrap está com alguma incompatibilidade com o bootstrap 5
   optei por criar um componente e controlar a partir deste.-->

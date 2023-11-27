@@ -7,12 +7,14 @@ import { MensagemModalComponent } from './modais/mensagem/mensagem.component';
 import { DadosPessoaModalComponent } from './modais/dadosPessoa/dadosPessoa.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
+import { PaginationComponent } from './components/paginacao/paginacao.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MensagemModalComponent,
-    DadosPessoaModalComponent
+    DadosPessoaModalComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
