@@ -12,54 +12,28 @@
   <table class="table">
     <thead class="table-dark">
       <tr>
-        <th scope="col">Nome</th>
-        <th scope="col">E-mail</th>
-        <th scope="col">Telefone</th>
-        <th scope="col">Data de nascimento</th>
+        <th scope="col" class="align-middle">Nome</th>
+        <th scope="col" class="align-middle">E-mail</th>
+        <th scope="col" class="align-middle">Telefone</th>
+        <th scope="col" class="align-middle">Data de nascimento</th>
         <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Maria</td>
-        <td>maria&#64;email.com</td>
-        <td>(48)9882-6578</td>
-        <td>25/04/1989</td>
-        <td class="d-flex">
-          <button class="btn">
-            <i class="bi bi-pencil"></i>
-          </button>
-          <button class="btn">
-            <i class="bi bi-trash"></i>
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td>Maria</td>
-        <td>maria&#64;email.com</td>
-        <td>(48)9882-6578</td>
-        <td>25/04/1989</td>
-        <td class="d-flex">
-          <button class="btn">
-            <i class="bi bi-pencil"></i>
-          </button>
-          <button class="btn">
-            <i class="bi bi-trash"></i>
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td>Maria</td>
-        <td>maria&#64;email.com</td>
-        <td>(48)9882-6578</td>
-        <td>25/04/1989</td>
-        <td class="d-flex">
-          <button class="btn">
-            <i class="bi bi-pencil"></i>
-          </button>
-          <button class="btn">
-            <i class="bi bi-trash"></i>
-          </button>
+      <tr *ngFor="let pessoa of pessoas">
+        <td class="align-middle">{{ pessoa.id }}</td>
+        <td class="align-middle">{{ pessoa.name }}</td>
+        <td class="align-middle">{{ pessoa.email }}</td>
+        <td class="align-middle">{{ pessoa.phone }}</td>
+        <td class="align-middle">
+          <div class="d-flex align-middle">
+            <button class="btn">
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button class="btn">
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
         </td>
       </tr>
     </tbody>
