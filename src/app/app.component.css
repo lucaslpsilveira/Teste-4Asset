@@ -1,0 +1,85 @@
+.navbar {
+  display: flex;
+  padding: 42px 100px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 82px;
+}
+
+.bg-4asset {
+  background-color: #131E23;
+}
+
+.navbar-brand {
+  margin: 0 auto;
+}
+
+.logo {
+  width: 204.36px;
+  height: 43.333px;
+  flex-shrink: 0;
+  margin-right: 5px;
+}
+
+.simbolo {
+  width: 37.422px;
+  height: 35.195px;
+  flex-shrink: 0;
+  margin-top: 7.51px;
+}
+
+.titulo-cadastro {
+  color: #FFF;
+  font-family: JetBrains Mono;
+  font-size: 44px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+
+.btn-cadastro {
+  display: inline-flex;
+  height: 52px;
+  padding: 9px 20px;
+  align-items: center;
+  gap: 32px;
+  flex-shrink: 0;
+  border-radius: 100px;
+  border: 1px solid #FFF;
+  background: rgba(19, 30, 35, 0.00);
+  color: #FFF
+}
+
+.cabecalho-tabela {
+  margin-bottom: 32px;
+}
+
+.table-dark {
+  --bs-table-bg: #142025;
+}
+
+table {
+  color: #131E23;
+}
+
+thead {
+  border-left: solid 24px #142025;
+  border-right: solid 24px #142025;
+}
+
+tbody{
+  border-left: solid 24px #fff;
+  border-right: solid 24px #fff;
+}
+
+td {
+  padding: 16px;
+}
+
+td:first-child {
+  padding-left: 32px;
+}
+
+td:last-child {
+  padding-right: 32px;
+}

@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+body {
+  font-family: 'JetBrains Mono';
+  font-size: 22px;
+  background-color: #ff0;
+  background-image: url("./assets/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
+}
+
+table {
+  font-family: JetBrains Mono;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 131%;
+}
+
+thead {
+  font-family: JetBrains Mono;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 131%;
+}
