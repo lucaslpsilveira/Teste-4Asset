@@ -4,15 +4,19 @@ import { AppComponent  } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { MensagemModalComponent } from './modais/mensagem/mensagem.component';
+import { DadosPessoaModalComponent } from './modais/dadosPessoa/dadosPessoa.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MensagemModalComponent
+    MensagemModalComponent,
+    DadosPessoaModalComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   bootstrap: [AppComponent]
 })

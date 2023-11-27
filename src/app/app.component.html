@@ -7,7 +7,7 @@
 <div class="container">
   <div class="d-flex justify-content-between align-items-center cabecalho-tabela">
     <h1 class="mb-0 titulo-cadastro">Cadastro de pessoas</h1>
-    <button class="btn btn-cadastro" (click)="exibirMensagem('titulo','teste')">Novo cadastro <i class="bi bi-arrow-right"></i></button>
+    <button class="btn btn-cadastro" (click)="novaPessoa()">Novo cadastro <i class="bi bi-arrow-right"></i></button>
   </div>
   <table class="table">
     <thead class="table-dark">
@@ -45,5 +45,11 @@
   [titulo]="tituloModal"
   [mensagem]="mensagemModal"
   [showModal]="showModal"
-  (fechar)="fecharModal()"
+  (fechar)="fecharModalMensagem()"
 ></app-mensagem-modal>
+
+<app-dados-pessoa-modal
+  [showModal]="modalPessoa"
+  (fechar)="fecharModalPessoa()"
+>
+</app-dados-pessoa-modal>
