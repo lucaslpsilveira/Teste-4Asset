@@ -28,7 +28,7 @@
         <td class="align-middle">
           <div class="d-flex align-middle">
             <button class="btn">
-              <i class="bi bi-pencil"></i>
+              <i class="bi bi-pencil" (click)="editar(pessoa)"></i>
             </button>
             <button class="btn" (click)="confirmaExclusao(pessoa.id)">
               <i class="bi bi-trash"></i>
@@ -52,6 +52,8 @@
 
 <app-dados-pessoa-modal
   [showModal]="modalPessoa"
+  [modoEdicao]="modoEdicao"
+  [pessoa]="pessoaSelecionada"
   (fechar)="fecharModalPessoa()"
   (mensagem)="exibirMensagem($event.titulo, $event.mensagem)"
 >

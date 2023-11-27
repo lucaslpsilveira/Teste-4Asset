@@ -20,8 +20,8 @@ export class PessoaService {
     return this.http.post<any>(`${this.apiUrl}/persons`, pessoa);
   }
 
-  editarPessoa(id: number, pessoa: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/persons/${id}`, pessoa);
+  editarPessoa(id: number, pessoa: Pessoa): Observable<any> {
+    return this.http.patch<any>(`${this.apiUrl}/persons/${id}`, pessoa);
   }
 
   excluirPessoa(id: number): Observable<any> {

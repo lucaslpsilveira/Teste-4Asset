@@ -21,6 +21,9 @@ export class AppComponent implements OnInit {
   exclusao: boolean = false;
 
   modalPessoa: boolean = false;
+  modoEdicao: boolean = false;
+  pessoaSelecionada: Pessoa | null = null;
+
   excluirId: number = 0;
 
   @ViewChild('modalRef')
@@ -43,6 +46,9 @@ export class AppComponent implements OnInit {
 
   fecharModalMensagem(){
     this.showModal = false;
+    this.pessoaSelecionada = null;
+    this.modoEdicao = false;
+    this.excluirId = 0;
   }
 
   novaPessoa(){
@@ -78,6 +84,12 @@ export class AppComponent implements OnInit {
     (error) => {
       this.exibirMensagem('Erro ao excluir pessoa!', error.error.message);
     });
+  }
+
+  editar(pessoa: Pessoa){
+    this.pessoaSelecionada = pessoa;
+    this.modoEdicao = true;
+    this.modalPessoa = true;
   }
 
   formatarData(dataApi: string): string {
