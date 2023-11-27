@@ -51,5 +51,6 @@
 <app-dados-pessoa-modal
   [showModal]="modalPessoa"
   (fechar)="fecharModalPessoa()"
+  (mensagem)="exibirMensagem($event.titulo, $event.mensagem)"
 >
 </app-dados-pessoa-modal>

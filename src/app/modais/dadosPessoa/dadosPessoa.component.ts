@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit,  Input, Output } from '@angular/core';
-import { Pessoa } from '../../services/interfaces';
+import { Pessoa, PessoaApiResponse, errorResponse } from '../../services/interfaces';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PessoaService } from '../../services/pessoa.service';
 
 @Component({
   selector: 'app-dados-pessoa-modal',
@@ -16,8 +17,12 @@ export class DadosPessoaModalComponent implements OnInit {
   pessoaForm: FormGroup = this.fb.group({});
 
   @Output() fechar = new EventEmitter<void>()
+  @Output() mensagem = new EventEmitter<{titulo: string, mensagem?: string }>()
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private pessoaService: PessoaService
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -25,19 +30,19 @@ export class DadosPessoaModalComponent implements OnInit {
 
   initForm(): void {
     this.pessoaForm = this.fb.group({
-      nome: ['', Validators.required],
+      name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      telefone: [''],
-      dataNascimento: ['']
+      phone: ['', Validators.required],
+      birthDate: ['', Validators.required]
     });
   }
 
   preencherFormulario(): void {
     this.pessoaForm.patchValue({
-      nome: this.pessoa.name,
+      name: this.pessoa.name,
       email: this.pessoa.email,
-      telefone: this.pessoa.phone,
-      dataNascimento: this.pessoa.birthDate
+      phone: this.pessoa.phone,
+      birthDate: this.pessoa.birthDate
     });
   }
 
@@ -47,7 +52,7 @@ export class DadosPessoaModalComponent implements OnInit {
       if (this.modoEdicao) {
         // this.editar({ ...this.pessoa, ...dadosFormulario });
       } else {
-        // this.salvar(dadosFormulario);
+        this.salvar(dadosFormulario);
       }
       this.pessoaForm.reset();
       this.modoEdicao = false;
@@ -58,8 +63,18 @@ export class DadosPessoaModalComponent implements OnInit {
 
   }
 
-  salvar(){
-
+  salvar(dadosFormulario: Pessoa){
+    console.log(dadosFormulario);
+    this.pessoaService.cadastrarPessoa(dadosFormulario).subscribe(
+      (response: PessoaApiResponse) => {
+        this.fecharModal();
+        this.mensagem.emit({titulo: 'Cadastro criado com sucesso!'})
+      },
+      (error) => {
+        this.fecharModal();
+        this.mensagem.emit({titulo: 'Erro ao cadastrar pessoa!', mensagem: error.error.message } )
+      }
+    );
   }
 
   fecharModal() {

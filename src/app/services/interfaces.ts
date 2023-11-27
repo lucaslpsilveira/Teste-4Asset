@@ -14,3 +14,16 @@ export interface ListaPessoasResponse {
   limit: number;
   count: number;
 }
+
+export interface PessoaApiResponse {
+  id: number;
+  email: string;
+  name: string;
+  phone: string;
+  birthDate: string;
+}
+
+export interface errorResponse {
+  code: number,
+  message: string
+}

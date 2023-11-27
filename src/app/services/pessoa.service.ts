@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ListaPessoasResponse } from './interfaces';
+import { ListaPessoasResponse, Pessoa } from './interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,7 @@ export class PessoaService {
     return this.http.get<ListaPessoasResponse>(`${this.apiUrl}/persons`);
   }
 
-  cadastrarPessoa(pessoa: any): Observable<any> {
+  cadastrarPessoa(pessoa: Pessoa): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/persons`, pessoa);
   }
 
