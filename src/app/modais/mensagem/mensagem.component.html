@@ -9,8 +9,10 @@
         <h1 class="modal-title">{{ titulo }}</h1>
         <p *ngIf="mensagem != ''">{{mensagem}}</p>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-dark btn-left" (click)="fecharModal()">Fechar</button>
+      <div [ngClass]="{'modal-footer': true, 'justify-content-start': !exclusao, 'justify-content-end': exclusao}">
+        <button *ngIf="!exclusao" type="button" class="btn btn-dark btn-left" (click)="fecharModal()">Fechar</button>
+        <button *ngIf="exclusao" type="button" class="btn btn-cancelar" (click)="fecharModal()">Cancelar</button>
+        <button *ngIf="exclusao" type="button" class="btn btn-dark" (click)="excluirPessoa()">Excluir</button>
       </div>
     </div>
   </div>

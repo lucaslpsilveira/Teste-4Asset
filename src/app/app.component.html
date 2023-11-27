@@ -21,16 +21,16 @@
     </thead>
     <tbody>
       <tr *ngFor="let pessoa of pessoas">
-        <td class="align-middle">{{ pessoa.id }}</td>
         <td class="align-middle">{{ pessoa.name }}</td>
         <td class="align-middle">{{ pessoa.email }}</td>
         <td class="align-middle">{{ pessoa.phone }}</td>
+        <td class="align-middle">{{ formatarData(pessoa.birthDate) }}</td>
         <td class="align-middle">
           <div class="d-flex align-middle">
             <button class="btn">
               <i class="bi bi-pencil"></i>
             </button>
-            <button class="btn">
+            <button class="btn" (click)="confirmaExclusao(pessoa.id)">
               <i class="bi bi-trash"></i>
             </button>
           </div>
@@ -45,7 +45,9 @@
   [titulo]="tituloModal"
   [mensagem]="mensagemModal"
   [showModal]="showModal"
+  [exclusao]="exclusao"
   (fechar)="fecharModalMensagem()"
+  (excluir)="excluir()"
 ></app-mensagem-modal>
 
 <app-dados-pessoa-modal

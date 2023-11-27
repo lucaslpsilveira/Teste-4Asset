@@ -71,12 +71,6 @@ p {
   align-self: flex-start;
 }
 
-.modal-footer {
-  display: flex;
-  justify-content: space-between;
-  border: none;
-}
-
-.btn-left {
-  align-self: flex-start;
+.btn-cancelar {
+  color:#707070
 }

@@ -18,8 +18,10 @@ export class AppComponent implements OnInit {
   tituloModal: string = "";
   mensagemModal: string = "";
   showModal: boolean = false;
+  exclusao: boolean = false;
 
   modalPessoa: boolean = false;
+  excluirId: number = 0;
 
   @ViewChild('modalRef')
   modalRef!: MensagemModalComponent;
@@ -30,13 +32,13 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.listarPessoas();
-    this.novaPessoa();
   }
 
-  exibirMensagem(titulo: string, mensagem: string = ''): void {
+  exibirMensagem(titulo: string, mensagem: string = '', excluir: boolean = false): void {
     this.tituloModal = titulo;
     this.mensagemModal = mensagem;
     this.showModal = true;
+    this.exclusao = excluir;
   }
 
   fecharModalMensagem(){
@@ -58,5 +60,31 @@ export class AppComponent implements OnInit {
 
   fecharModalPessoa(){
     this.modalPessoa = false;
+    this.listarPessoas();
+  }
+
+  confirmaExclusao(id: number){
+    this.excluirId = id;
+    const mensagem = 'O cadastro será excluido definitivamente. Você tem certeza que deseja continuar?'
+    this.exibirMensagem('Excluir cadastro', mensagem, true);
+  }
+
+  excluir(){
+    this.pessoaService.excluirPessoa(this.excluirId).subscribe(async (response) => {
+      await this.fecharModalMensagem();
+      await this.exibirMensagem('Cadastro Excluido com sucesso!');
+      this.listarPessoas();
+    },
+    (error) => {
+      this.exibirMensagem('Erro ao excluir pessoa!', error.error.message);
+    });
+  }
+
+  formatarData(dataApi: string): string {
+    const dataOriginal = new Date(dataApi);
+    const dia = dataOriginal.getDate().toString().padStart(2, '0');
+    const mes = (dataOriginal.getMonth() + 1).toString().padStart(2, '0');
+    const ano = dataOriginal.getFullYear();
+    return `${dia}/${mes}/${ano}`;
   }
 }
